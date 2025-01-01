@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "cover": "https://img1.baidu.com/it/u=1418618582,1584583376&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=1200",
+    "comment": "23",
+    "type": "阵营本",
+    "shopNames": "路由",
+    "created": "s是",
+    "price": "198",
+    "ptPrice": 98,
+    "groupNumber": 3400,
+    "currentGroupNumber": 12,
+    "collectors": 89,
+    "clickCount": "1000+"
+  },
+  {
+    "id": 2,
+    "cover": "https://img2.baidu.com/it/u=119438997,3155393670&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=707",
+    "comment": 34,
+    "type": "阵营本",
+    "shopNames": "eda",
+    "created": "否",
+    "price": 98,
+    "ptPrice": 48,
+    "groupNumber": 1000,
+    "currentGroupNumber": 22,
+    "collectors": 89,
+    "clickCount": "99+"
+  },
+  {
+    "id": 3,
+    "cover": "https://img2.baidu.com/it/u=1828473881,169212629&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=750",
+    "comment": 94,
+    "type": "阵营本",
+    "shopNames": "额发大财",
+    "created": "否",
+    "price": 120,
+    "ptPrice": 120,
+    "groupNumber": 900,
+    "currentGroupNumber": 52,
+    "collectors": 1000,
+    "clickCount": "10000+"
+  }
+]
