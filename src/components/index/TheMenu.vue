@@ -2,18 +2,20 @@
 import {onMounted} from 'vue';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import {useRouter} from "vue-router";
+
+const router = useRouter();
 
 const meta = import.meta.url
-
 const items = [
-  {src: new URL('../../assets/images/11.jpg',meta).href, title: '精品小说', count: 23658},
-  {src: new URL('../../assets/images/12.jpg',meta).href, title: '历史', count: 28697},
-  {src: new URL('../../assets/images/13.jpg',meta).href, title: '文学', count: 42674},
-  {src: new URL('../../assets/images/14.jpg',meta).href, title: '艺术', count: 9240},
-  {src: new URL('../../assets/images/15.jpg',meta).href, title: '艺术', count: 9240},
-  {src: new URL('../../assets/images/16.jpg',meta).href, title: '艺术', count: 9240},
-  {src: new URL('../../assets/images/16.jpg',meta).href, title: '艺术', count: 9240},
-  {src: new URL('../../assets/images/16.jpg',meta).href, title: '艺术', count: 9240},
+  {src: new URL('../../assets/images/11.jpg',meta).href, title: '机制本', count: 23658},
+  {src: new URL('../../assets/images/12.jpg',meta).href, title: '阵营本', count: 28697},
+  {src: new URL('../../assets/images/13.jpg',meta).href, title: '情感本', count: 42674},
+  {src: new URL('../../assets/images/14.jpg',meta).href, title: '恐怖本', count: 9240},
+  {src: new URL('../../assets/images/15.jpg',meta).href, title: '硬核本', count: 9240},
+  {src: new URL('../../assets/images/16.jpg',meta).href, title: '还原本', count: 9240},
+  {src: new URL('../../assets/images/16.jpg',meta).href, title: '演绎本', count: 9240},
+  {src: new URL('../../assets/images/16.jpg',meta).href, title: '变格本', count: 9240},
 ];
 
 gsap.registerPlugin(ScrollTrigger);
@@ -31,19 +33,23 @@ onMounted(() => {
   });
 });
 
+function go(){
+  router.push('categories')
+}
 </script>
 
 <template>
   <div class="category" >
     <div class="title">
       <div class="left">分类</div>
-      <div class="right">更多</div>
+      <div class="right" @click="go">更多</div>
     </div>
     <div class="list">
       <div
         class="category-item"
         v-for="(item, index) in items"
         :key="index"
+        @click="go"
       >
         <img :src="item.src" alt="书籍封面">
         <div class="info">
@@ -92,6 +98,7 @@ onMounted(() => {
   padding: 10px;
   background: rgba(255, 255, 255, 0.5);
   transition: box-shadow 0.3s ease;
+  cursor: pointer;
 }
 
 .category-item:hover img {

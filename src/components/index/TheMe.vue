@@ -6,7 +6,9 @@
   <div class="main_nav">
     <div class="left">
       <img src="../../assets/images/logo.jpg" alt=""/>
-      <span class="nickanme">冰糖雪梨</span>
+      <span class="nickname">
+        Design By BTXL
+      </span>
     </div>
     <div class="right">
       <div class="actions">
@@ -69,7 +71,8 @@
 
 .left {
   display: flex;
-  align-items: center; /* 垂直居中 */
+  align-items: center;
+  margin-top: 10px;
 }
 
 .left img {
@@ -80,5 +83,6 @@
 .nickname{
   font-size: 15px;
   font-weight: 600;
+  font-style: italic; /* 设置斜体 */
 }
 </style>

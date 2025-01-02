@@ -1,11 +1,18 @@
 <script setup>
 import {getCommends} from '@/api'
 import {onMounted, ref} from "vue";
+import {useRouter} from "vue-router";
 
+const router = useRouter()
 const list = ref([])
+
 onMounted(async () => {
   list.value = await getCommends()
 })
+
+function go(id){
+  router.push(`check?id=${id}`)
+}
 </script>
 
 <template>
@@ -16,6 +23,7 @@ onMounted(async () => {
         v-for="(value,index) in list"
         :key="index" class="box"
         :style="{ backgroundImage: `url(${value.imgUrl})` }"
+        @click="go(value.id)"
       >
         <div class="bot_content z-900" v-html="value.content"/>
         <div/>

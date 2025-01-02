@@ -1,15 +1,22 @@
 <script setup>
 import {useRouter} from "vue-router";
-import {onMounted, ref} from "vue";
+import {onMounted, ref, defineProps} from "vue";
 import {useLocalCache} from "@/hooks";
+
+const { isShow } = defineProps({
+  isShow: {
+    type: Boolean,
+    default: true
+  }
+})
 
 const router = useRouter()
 const {getCache} = useLocalCache();
 
 const username = ref();
 
-function go() {
-  router.push('login')
+function go(uri) {
+  router.push(uri)
 }
 
 onMounted(() => {
@@ -23,13 +30,17 @@ onMounted(() => {
       <img src="../assets/images/logo_.png" alt=""/>
     </div>
     <div class="w_right">
-      <span v-if="username"><b>{{ username }}</b></span>
-      <span v-else @click="go()"><b>登录</b></span>
-      <!--       <span @click="goClientIndex()"><b>你好！wsy</b></span> -->
+      <slot name="menu"></slot>
+      <span v-if="username" @click="go('modifyClient')">
+        {{ username }}
+      </span>
+      <span v-else @click="go('login')">
+        登录
+      </span>
     </div>
   </div>
   <!-- 高度占位 -->
-  <div style="height: 90px"></div>
+  <div v-if="isShow" style="height: 90px"></div>
 </template>
 
 <style scoped>
@@ -50,6 +61,7 @@ onMounted(() => {
 
 .w_right {
   width: 120px;
+  padding: 0 10px;
 }
 
 .w_left img {
@@ -60,5 +72,6 @@ onMounted(() => {
   margin-right: 20px;
   cursor: pointer;
   font-weight: bold;
+  font-size: 14px;
 }
 </style>

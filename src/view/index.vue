@@ -7,6 +7,7 @@ import TheMenu from "@/components/index/TheMenu.vue"
 import TheRecommend from "@/components/index/TheCommend.vue";
 import TheOther from "@/components/index/TheOther.vue";
 import TheFooter from "@/components/TheFooter.vue";
+import TheShop from "@/components/index/TheShop.vue";
 </script>
 
 <template>
@@ -20,6 +21,7 @@ import TheFooter from "@/components/TheFooter.vue";
       <TheNotice/>
     </div>
   </div>
+  <TheShop />
   <TheMenu/>
   <TheRecommend/>
   <TheOther/>

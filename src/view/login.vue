@@ -18,6 +18,7 @@ async function login(){
   }
   const data = await onLogin(user.value)
   setCache('username', data[0].username)
+  setCache('id', data[0].id)
   await router.push('/')
 }
 </script>

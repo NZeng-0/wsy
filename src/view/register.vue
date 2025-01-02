@@ -23,6 +23,7 @@ async function register() {
       password: user.value.password
     })
     setCache('username', res[0].username)
+    setCache('id', data[0].id)
     await router.push('/')
   }
 }
