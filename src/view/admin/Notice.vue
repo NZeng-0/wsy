@@ -9,49 +9,45 @@
     <button @click="addNewNoticeClick()">发布</button>
   </div>
 </template>
-<script>
-// import noticeData from "@/utils/Notice.json";
-
+<script setup>
 import {onMounted, reactive, ref} from "vue";
 import {useRoute, useRouter} from "vue-router";
+import {getNotices} from "@/api";
 
-export default {
-  setup() {
-    const initialNotices = require("@/utils/Notice.json");
-    const noticeData = reactive([...initialNotices]);
-    const addNewNotice = ref("");
-    const route = useRoute();
-    const goName = ref("");
-    onMounted(() => {
-      goName.value = route.params.toName;
-      console.log(goName.value)
-    })
-    const router = useRouter();
+const initialNotices = ref([]);
 
-    function goIndex() {
-      router.push({
-        name: "info",
-        params: {
-          toName: '个人信息'
-        }
-      })
+const noticeData = reactive([...initialNotices]);
+const addNewNotice = ref("");
+const route = useRoute();
+const goName = ref("");
+onMounted(() => {
+  goName.value = route.params.toName;
+  console.log(goName.value)
+})
+const router = useRouter();
+
+function goIndex() {
+  router.push({
+    name: "info",
+    params: {
+      toName: '个人信息'
     }
-
-    function addNewNoticeClick() {
-      console.log()
-      const currentTime = new Date().toLocaleDateString().replaceAll("/", "-");
-      noticeData.push({
-        content: addNewNotice.value,
-        date: currentTime
-      })
-      addNewNotice.value = ""
-    }
-
-    return {
-      goIndex, noticeData, addNewNoticeClick, addNewNotice, goName
-    }
-  }
+  })
 }
+
+function addNewNoticeClick() {
+  console.log()
+  const currentTime = new Date().toLocaleDateString().replaceAll("/", "-");
+  noticeData.push({
+    content: addNewNotice.value,
+    date: currentTime
+  })
+  addNewNotice.value = ""
+}
+
+onMounted(async() =>{
+  initialNotices.value = await getNotices();
+})
 </script>
 <style>
 .noticeBox p {

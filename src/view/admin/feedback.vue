@@ -95,37 +95,35 @@
     </table>
   </div>
 </template>
-<script>
+<script setup>
 import {onMounted, reactive, ref} from "vue";
 import {useRoute, useRouter} from "vue-router";
+import {getUsers} from "@/api";
 
-export default {
-  setup() {
-    const userDatas = require("@/utils/loginDates.json");
-    let newUserData = ref([])
-    const goName = ref("");
-    const route = useRoute();
-    const router = useRouter();
-    onMounted(() => {
-      newUserData.value = userDatas.filter(item => {
-        return item.type !== "admin";
-      })
-      goName.value = route.params.toName;
-    })
+const users = ref([]);
+let newUserData = ref([])
+const goName = ref("");
+const route = useRoute();
+const router = useRouter();
+onMounted(() => {
+  newUserData.value = users.filter(item => {
+    return item.type !== "admin";
+  })
+  goName.value = route.params.toName;
+})
 
-    function goIndex() {
-      router.push({
-        name: "info",
-        params: {
-          toName: '个人信息'
-        }
-      })
+function goIndex() {
+  router.push({
+    name: "info",
+    params: {
+      toName: '个人信息'
     }
-
-    return {newUserData, goName, goIndex}
-  }
-
+  })
 }
+
+onMounted(async ()=>{
+  users.value = await getUsers();
+})
 </script>
 <style>
 .userInfos img {

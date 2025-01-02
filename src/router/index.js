@@ -1,7 +1,7 @@
 import {createRouter, createWebHistory} from "vue-router";
-import index from "@/components/index.vue";
-import login from "@/components/login.vue";
-import register from "@/components/register.vue";
+import index from "@/view/index.vue";
+import login from "@/view/login.vue";
+import register from "@/view/register.vue";
 import adminIndex from "@/view/admin/index.vue"
 import sort from "@/view/admin/sort.vue"
 import feedback from "@/view/admin/feedback.vue";
@@ -12,7 +12,6 @@ import Info from "@/view/admin/Info.vue";
 import merchant from "@/view/admin/merchant.vue";
 import notice from "@/view/admin/Notice.vue";
 import more from "@/view/admin/more.vue";
-import {getLoc} from "@/utils/util";
 
 const routes = [
     {

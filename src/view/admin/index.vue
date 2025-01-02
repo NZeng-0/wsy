@@ -40,7 +40,7 @@
 </template>
 <script>
 import {useRouter} from "vue-router";
-import {removeLoc} from "@/utils/util";
+import {useLocalCache} from "@/hooks";
 import {onMounted, onUnmounted, ref} from "vue";
 
 export default {

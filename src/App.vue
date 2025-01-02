@@ -17,5 +17,4 @@ export default {
   list-style: none;
 /*background-color: darkgray;*/
 }
-
 </style>

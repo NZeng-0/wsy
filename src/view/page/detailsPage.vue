@@ -37,7 +37,7 @@ export default {
     const router = useRouter();
     const route = useRoute();
     const id = ref(0);
-    const indexDate = require("@/utils/indexDate.json");
+    const indexDate = require("../../mock/db.json");
     let msg =
         ref([]);
 

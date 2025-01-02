@@ -48,57 +48,43 @@
     </div>
   </div>
 </template>
-<script>
-import {useRoute, useRouter} from "vue-router";
-import {onMounted, reactive, ref} from "vue";
-import {getLoc, removeLoc} from "@/utils/util";
-import {filter} from "core-js/internals/array-iteration";
+<script setup>
+import {useRouter} from "vue-router";
+import {onMounted, ref} from "vue";
+import {useLocalCache} from "@/hooks";
+import {getUserInfo} from "@/api";
 
-export default {
-  setup() {
-    const router = useRouter();
-    // let email = ref("email");
-    // let password = ref("passwrd")
-    // let phone_number = ref("1233333")
-    // let username = ref("1111111")
-    // let showErr = ref("")
-    let modifyT = ref(true);
-    let info = ref([]);
-    const loginDates = require("@/utils/loginDates.json");
+const router = useRouter();
+const {getCache, removeCache} = useLocalCache()
+let modifyT = ref(true);
+let info = ref([]);
 
-    function goIndex() {
-      router.push("/")
-    }
+const loginDates = ref([])
 
-    onMounted(() => {
-      let id = getLoc("id")
-      info.value = loginDates.filter(value => {
-        // console.log(value)
-        return value.id == id;//注：非全等
-      })[0]
-      console.log(info.value)
-    })
-
-    function modifyChange() {
-      modifyT.value = false;
-    }
-
-    function logout() {
-      removeLoc("username")
-      removeLoc("id")
-      removeLoc("type")
-      router.push("/login")
-    }
-
-    function modifyC() {
-      modifyT.value = true;
-    }
-
-    return {
-      info, modifyC, goIndex, modifyT, modifyChange, logout
-    }
-  }
+function goIndex() {
+  router.push("/")
 }
+
+onMounted(async () => {
+  let id = getCache("id")
+  info.value = await getUserInfo(id)
+})
+
+function modifyChange() {
+  modifyT.value = false;
+}
+
+function logout() {
+  removeCache("username")
+  removeCache("id")
+  removeCache("type")
+  router.push("/login")
+}
+
+function modifyC() {
+  modifyT.value = true;
+}
+
 </script>
 <style>
 .center {
@@ -222,7 +208,8 @@ export default {
 .ull .dc:hover {
   cursor: pointer;
 }
-.right h4{
+
+.right h4 {
   color: black;
 }
 </style>
