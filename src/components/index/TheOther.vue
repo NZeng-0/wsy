@@ -6,25 +6,24 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 onMounted(() => {
-  gsap.from('.index_bottom_left', {
+  gsap.from('.olist', {
     x: -500,
     opacity: 0,
     duration: 1,
     scrollTrigger: {
-      trigger: '.index_bottom_left',
+      trigger: '.olist',
       start: 'top 100%',
-      toggleActions: 'play reset play reset',
-      // markers: true
+      toggleActions: 'restart none none none',
     }
-  });
-});
+  })
+})
 </script>
 
 <template>
   <div class="container">
     <div class="title">其他</div>
     <div class="index_bottom">
-      <div class="index_bottom_left">
+      <div class="olist">
         <img src="../../assets/images/17.jpg" alt="">
         <img src="../../assets/images/18.jpg" alt="">
         <img src="../../assets/images/19.jpg" alt="">
@@ -53,6 +52,7 @@ onMounted(() => {
   margin-top: 10px;
   padding: 0 40px;
 }
+
 .title {
   font-size: 16px;
   font-weight: 600;
@@ -68,7 +68,7 @@ onMounted(() => {
   display: flex;
 }
 
-.index_bottom_left {
+.olist {
   width: 60%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -78,14 +78,14 @@ onMounted(() => {
   margin-left: 60px;
 }
 
-.index_bottom_left img {
+.olist img {
   width: 200px;
   height: 85px;
   border-radius: 10px;
   transition: all 0.4s ease-in-out;
 }
 
-.index_bottom_left img:hover {
+.olist img:hover {
   transform: scale(1.05);
 }
 

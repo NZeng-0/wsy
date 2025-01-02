@@ -21,12 +21,12 @@ const items = [
 gsap.registerPlugin(ScrollTrigger);
 
 onMounted(() => {
-  gsap.from('.list', {
+  gsap.from('.class-left', {
     y: 200,
     opacity: 0,
     duration: 1,
     scrollTrigger: {
-      trigger: '.list',
+      trigger: '.class-left',
       start: 'top 80%',
       toggleActions: 'play none none reverse', // 修改退出动画
     }
@@ -44,7 +44,7 @@ function go(){
       <div class="left">分类</div>
       <div class="right" @click="go">更多</div>
     </div>
-    <div class="list">
+    <div class="class-left">
       <div
         class="category-item"
         v-for="(item, index) in items"
@@ -78,7 +78,7 @@ function go(){
   margin-bottom: 15px;
 }
 
-.list {
+.class-left {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
